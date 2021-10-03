@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/world/map_entities/falling_tile/falling_tile.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 1, 0.25, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.454902, 0.705882, 0.552941, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.709804, 0.309804, 0.333333, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.686275, 0.517647, 0.407843, 1 )
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+size = Vector3( 0.99, 1, 0.99 )
+
+[sub_resource type="ConcavePolygonShape" id=6]
+data = PoolVector3Array( -0.5, 0.125, 0.5, 0.5, 0.125, 0.5, -0.5, -0.125, 0.5, 0.5, 0.125, 0.5, 0.5, -0.125, 0.5, -0.5, -0.125, 0.5, 0.5, 0.125, -0.5, -0.5, 0.125, -0.5, 0.5, -0.125, -0.5, -0.5, 0.125, -0.5, -0.5, -0.125, -0.5, 0.5, -0.125, -0.5, 0.5, 0.125, 0.5, 0.5, 0.125, -0.5, 0.5, -0.125, 0.5, 0.5, 0.125, -0.5, 0.5, -0.125, -0.5, 0.5, -0.125, 0.5, -0.5, 0.125, -0.5, -0.5, 0.125, 0.5, -0.5, -0.125, -0.5, -0.5, 0.125, 0.5, -0.5, -0.125, 0.5, -0.5, -0.125, -0.5, 0.5, 0.125, 0.5, -0.5, 0.125, 0.5, 0.5, 0.125, -0.5, -0.5, 0.125, 0.5, -0.5, 0.125, -0.5, 0.5, 0.125, -0.5, -0.5, -0.125, 0.5, 0.5, -0.125, 0.5, -0.5, -0.125, -0.5, 0.5, -0.125, 0.5, 0.5, -0.125, -0.5, -0.5, -0.125, -0.5 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.453444, 1, 0.465923 )
+
+[node name="falling_tile" type="StaticBody" groups=[
+"falling_tile",
+]]
+script = ExtResource( 1 )
+
+[node name="green" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="red" type="MeshInstance" parent="."]
+visible = false
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 6 )
+
+[node name="entity_detector" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="entity_detector"]
+shape = SubResource( 7 )
+
+[node name="stood_on_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="falling_tween" type="Tween" parent="."]
+
+[connection signal="body_entered" from="entity_detector" to="." method="_on_entity_detector_body_entered"]
+[connection signal="body_exited" from="entity_detector" to="." method="_on_entity_detector_body_exited"]
+[connection signal="timeout" from="stood_on_timer" to="." method="_on_stood_on_timer_timeout"]
+[connection signal="tween_all_completed" from="falling_tween" to="." method="_on_falling_tween_tween_all_completed"]

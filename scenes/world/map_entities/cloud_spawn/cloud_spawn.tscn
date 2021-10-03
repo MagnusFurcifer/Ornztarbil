@@ -1,0 +1,258 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/world/map_entities/cloud/cloud.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/world/map_entities/cloud_spawn/cloud_spawn.gd" type="Script" id=2]
+
+[node name="cloud_spawn" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.6376, -60 )
+script = ExtResource( 2 )
+
+[node name="clouds" type="Node" parent="."]
+
+[node name="cloud" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 27.6669, 55.8475, 0.415671 )
+
+[node name="cloud2" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 16.4933, 55.8475, -22.0301 )
+
+[node name="cloud3" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 4.63498, 55.8475, -5.27828 )
+
+[node name="cloud4" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 12.996, 46.8459, -5.27828 )
+
+[node name="cloud5" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 12.996, 46.8459, 14.6817 )
+
+[node name="cloud6" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.502956, 46.8459, 33.4768 )
+
+[node name="cloud7" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 13.5574, 46.8459, 41.0848 )
+
+[node name="cloud8" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 13.5574, 32.6714, 52.2662 )
+
+[node name="cloud9" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -31.5832, 32.6714, 39.2234 )
+
+[node name="cloud10" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -31.5832, 32.6714, 19.0081 )
+
+[node name="cloud11" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -43.3419, 38.4982, 31.8735 )
+
+[node name="cloud12" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -32.543, 20.6165, -13.6652 )
+
+[node name="cloud13" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -32.543, 17.428, 4.46391 )
+
+[node name="cloud14" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -12.6872, 42.4061, 4.46391 )
+
+[node name="cloud15" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -12.6872, 42.4061, 24.2112 )
+
+[node name="cloud16" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -12.6872, 42.4061, 24.2112 )
+
+[node name="cloud17" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -11.7836, 42.7261, 50.5578 )
+
+[node name="cloud28" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 76.4167, 32.6714, -14.7611 )
+
+[node name="cloud29" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 76.4167, 32.6714, -34.9764 )
+
+[node name="cloud30" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 64.6581, 38.4982, -22.111 )
+
+[node name="cloud31" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 75.457, 20.6165, -67.6497 )
+
+[node name="cloud32" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 75.457, 17.428, -49.5206 )
+
+[node name="cloud33" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 95.3128, 42.4061, -49.5206 )
+
+[node name="cloud34" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 95.3128, 42.4061, -29.7733 )
+
+[node name="cloud35" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 95.3128, 42.4061, -29.7733 )
+
+[node name="cloud36" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 96.2164, 42.7261, -3.42669 )
+
+[node name="cloud37" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 76.4167, 6.81429, 73.3869 )
+
+[node name="cloud38" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 76.4167, 6.81429, 53.1716 )
+
+[node name="cloud39" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 64.6581, 12.6411, 66.037 )
+
+[node name="cloud40" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 75.457, -5.24059, 20.4984 )
+
+[node name="cloud41" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 75.457, -8.42909, 38.6275 )
+
+[node name="cloud42" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 95.3128, 16.5489, 38.6275 )
+
+[node name="cloud43" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 95.3128, 16.5489, 58.3747 )
+
+[node name="cloud44" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 95.3128, 16.5489, 58.3747 )
+
+[node name="cloud45" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 96.2164, 16.8689, 84.7213 )
+
+[node name="cloud46" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -69.1402, 6.81429, 104.932 )
+
+[node name="cloud47" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -69.1402, 6.81429, 84.7164 )
+
+[node name="cloud48" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -80.8989, 12.6411, 97.5817 )
+
+[node name="cloud49" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -70.1, -5.24059, 52.0431 )
+
+[node name="cloud50" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -70.1, -8.42909, 70.1722 )
+
+[node name="cloud51" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -50.2442, 16.5489, 70.1722 )
+
+[node name="cloud52" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -50.2442, 16.5489, 89.9194 )
+
+[node name="cloud53" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -50.2442, 16.5489, 89.9194 )
+
+[node name="cloud54" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -49.3405, 16.8689, 116.266 )
+
+[node name="cloud55" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 18.4571, 24.9021, 137.119 )
+
+[node name="cloud56" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 18.4571, 24.9021, 116.904 )
+
+[node name="cloud57" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 6.6985, 30.7289, 129.769 )
+
+[node name="cloud58" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 17.4973, 12.8472, 84.2307 )
+
+[node name="cloud59" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 17.4973, 9.65873, 102.36 )
+
+[node name="cloud60" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 37.3531, 34.6368, 102.36 )
+
+[node name="cloud61" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 37.3531, 34.6368, 122.107 )
+
+[node name="cloud62" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 37.3531, 34.6368, 122.107 )
+
+[node name="cloud63" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 38.2568, 34.9568, 148.454 )
+
+[node name="cloud64" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 61.4571, 24.9021, 137.119 )
+
+[node name="cloud65" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 61.4571, 24.9021, 116.904 )
+
+[node name="cloud66" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 49.6985, 30.7289, 129.769 )
+
+[node name="cloud67" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 60.4973, 12.8472, 84.2307 )
+
+[node name="cloud68" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 60.4973, 9.65873, 102.36 )
+
+[node name="cloud69" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 80.3531, 34.6368, 102.36 )
+
+[node name="cloud70" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 80.3531, 34.6368, 122.107 )
+
+[node name="cloud71" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 80.3531, 34.6368, 122.107 )
+
+[node name="cloud72" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 81.2568, 34.9568, 148.454 )
+
+[node name="cloud73" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -92.5429, 24.9021, 137.119 )
+
+[node name="cloud74" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -92.5429, 24.9021, 116.904 )
+
+[node name="cloud75" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -104.301, 30.7289, 129.769 )
+
+[node name="cloud76" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -93.5027, 12.8472, 84.2307 )
+
+[node name="cloud77" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -93.5027, 9.65873, 102.36 )
+
+[node name="cloud78" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -73.6469, 34.6368, 102.36 )
+
+[node name="cloud79" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -73.6469, 34.6368, 122.107 )
+
+[node name="cloud80" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -73.6469, 34.6368, 122.107 )
+
+[node name="cloud81" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -72.7432, 34.9568, 148.454 )
+
+[node name="cloud18" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 43.707, 57.1593, 50.5578 )
+
+[node name="cloud19" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 43.707, 57.1593, 67.784 )
+
+[node name="cloud20" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 22.2636, 57.1593, 67.784 )
+
+[node name="cloud21" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -1.72577, 46.008, 67.784 )
+
+[node name="cloud22" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -1.72577, 46.008, -42.7217 )
+
+[node name="cloud23" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 18.2951, 31.3897, -42.7217 )
+
+[node name="cloud24" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 42.0543, 31.3897, -42.7217 )
+
+[node name="cloud25" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 42.0543, 37.9183, -25.7181 )
+
+[node name="cloud26" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 42.0543, 37.9183, -62.5695 )
+
+[node name="cloud27" parent="clouds" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 23.9935, 37.9183, -62.5695 )
+
+[node name="cloud_spawn_timer" type="Timer" parent="."]
+wait_time = 0.233
+one_shot = true
+autostart = true

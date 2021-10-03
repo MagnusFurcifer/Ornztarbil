@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/5.wav-5fddd741f3ef3f854a4ce7a2b414d1c6.sample"
+
+[deps]
+
+source_file="res://scenes/entities/player/assets/foot_steps/default/5.wav"
+dest_files=[ "res://.import/5.wav-5fddd741f3ef3f854a4ce7a2b414d1c6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

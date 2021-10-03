@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/world/map_entities/3d_label/dynamic_font.tres" type="DynamicFont" id=1]
+
+[node name="Control" type="Control"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 243.52
+margin_top = -67.9589
+margin_right = 776.52
+margin_bottom = 721.041
+custom_fonts/font = ExtResource( 1 )
+text = "W"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,182 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://scenes/world/map_entities/falling_tile/falling_tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/world/map_entities/finish_line/finish_line.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/world/map_entities/death_box/death_box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/world/map_entities/cloud_spawn/cloud_spawn.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/world/map_entities/3d_label/3d_label.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/world/map_entities/arrow/arrow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/world/maps/level_01/map.gd" type="Script" id=7]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.976471, 0.92549, 0.607843, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 2, 0.25, 2 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -1, 0.125, 1, 1, 0.125, -1, 1, 0.125, 1, -1, 0.125, -1, -1, -0.125, 1, 1, -0.125, -1, 1, -0.125, 1, -1, -0.125, -1, 1, 0.125, 1, -1, 0.125, -1, 1, 0.125, -1, -1, 0.125, 1, 1, -0.125, 1, -1, -0.125, -1, 1, -0.125, -1, -1, -0.125, 1, 1, 0.125, 1, -1, -0.125, 1, -1, 0.125, 1, 1, -0.125, 1, 1, 0.125, -1, -1, -0.125, -1, -1, 0.125, -1, 1, -0.125, -1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.976471, 0.92549, 0.607843, 1 )
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+size = Vector3( 2, 0.25, 2 )
+
+[sub_resource type="ConvexPolygonShape" id=6]
+points = PoolVector3Array( -1, 0.125, 1, 1, 0.125, -1, 1, 0.125, 1, -1, 0.125, -1, -1, -0.125, 1, 1, -0.125, -1, 1, -0.125, 1, -1, -0.125, -1, 1, 0.125, 1, -1, 0.125, -1, 1, 0.125, -1, -1, 0.125, 1, 1, -0.125, 1, -1, -0.125, -1, 1, -0.125, -1, -1, -0.125, 1, 1, 0.125, 1, -1, -0.125, 1, -1, 0.125, 1, 1, -0.125, 1, 1, 0.125, -1, -1, -0.125, -1, -1, 0.125, -1, 1, -0.125, -1 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "default"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 58.997 ), Vector3( -7.78869, 11.4255, 71.5336 ), Vector3( 0, 0, 58.997 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "default"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 9.19726e-07, -18.848, -57.41 ), Vector3( -3.77442, -33.3044, -67.5816 ), Vector3( 9.19726e-07, -18.848, -57.41 ) ]
+}
+
+[sub_resource type="ProceduralSky" id=9]
+
+[sub_resource type="Environment" id=10]
+background_mode = 1
+background_sky = SubResource( 9 )
+background_color = Color( 0.756863, 0.92549, 0.952941, 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+fog_enabled = true
+fog_color = Color( 0.756863, 0.92549, 0.952941, 1 )
+fog_sun_color = Color( 1, 0.901961, 0.701961, 1 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.670588, 0.733333, 0.776471, 1 )
+
+[sub_resource type="CubeMesh" id=12]
+material = SubResource( 11 )
+size = Vector3( 1, 0.5, 0.1 )
+
+[node name="map" type="Spatial"]
+script = ExtResource( 7 )
+
+[node name="player_one_start" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="player_one_start"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="player_one_start"]
+shape = SubResource( 3 )
+
+[node name="spawn" type="Spatial" parent="player_one_start"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.559225 )
+
+[node name="look_at_target" type="Spatial" parent="player_one_start"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.44908 )
+
+[node name="finish" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="finish"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="finish"]
+shape = SubResource( 6 )
+
+[node name="finish_line" parent="finish" instance=ExtResource( 2 )]
+
+[node name="arrow3" parent="finish" instance=ExtResource( 6 )]
+transform = Transform( 0.257541, -0.42857, 0, 0.42857, 0.257541, 0, 0, 0, 0.5, -1.5959, 1.5793, 0.322702 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="finish/arrow3"]
+autoplay = "default"
+anims/default = SubResource( 7 )
+
+[node name="arrow" parent="finish" instance=ExtResource( 6 )]
+transform = Transform( 0.254871, 0.398684, -0.161529, -0.421273, 0.269312, -8.02612e-09, 0.0870035, 0.136096, 0.473189, 1.73055, 1.60567, 0.322702 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="finish/arrow"]
+autoplay = "default"
+anims/default = SubResource( 8 )
+
+[node name="active_tiles" type="Spatial" parent="."]
+
+[node name="falling_tile" parent="active_tiles" instance=ExtResource( 1 )]
+
+[node name="falling_tile4" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+
+[node name="falling_tile7" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="falling_tile10" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="falling_tile13" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="falling_tile16" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+
+[node name="falling_tile19" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="falling_tile22" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7 )
+
+[node name="falling_tile25" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="death_box" parent="." instance=ExtResource( 3 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 10 )
+
+[node name="cloud_spawn" parent="WorldEnvironment" instance=ExtResource( 4 )]
+
+[node name="tutorial_billboard" type="MeshInstance" parent="."]
+transform = Transform( 0.841248, -0.0549563, 0.53785, 0.0560314, 0.998326, 0.0143687, -0.537739, 0.0180489, 0.842918, 1.40448, 0.811118, 0.504249 )
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="3d_label" parent="tutorial_billboard" instance=ExtResource( 5 )]
+transform = Transform( -0.25, 0, -3.7749e-08, 0, 0.25, 0, 3.7749e-08, 0, -0.25, 0.0124969, 0.121451, -0.0510365 )
+
+[node name="3d_label2" parent="tutorial_billboard" instance=ExtResource( 5 )]
+transform = Transform( -0.25, 0, -3.7749e-08, 0, 0.25, 0, 3.7749e-08, 0, -0.25, 0.185791, -0.0797332, -0.0510365 )
+text = "A"
+
+[node name="3d_label3" parent="tutorial_billboard" instance=ExtResource( 5 )]
+transform = Transform( -0.25, 0, -3.7749e-08, 0, 0.25, 0, 3.7749e-08, 0, -0.25, -0.17318, -0.0797332, -0.0510365 )
+text = "D"
+
+[node name="3d_label4" parent="tutorial_billboard" instance=ExtResource( 5 )]
+transform = Transform( -0.25, 0, -3.7749e-08, 0, 0.25, 0, 3.7749e-08, 0, -0.25, 0.0124969, -0.0797332, -0.0510365 )
+text = "S"
+
+[node name="enemy_spawns" type="Node" parent="."]

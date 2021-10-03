@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/menus/loading_screen/loading_screen.gd" type="Script" id=1]
+
+[node name="loading_screen" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="color_rect" type="ColorRect" parent="."]
+margin_left = -301.674
+margin_top = -272.307
+margin_right = -261.674
+margin_bottom = -232.307
+rect_scale = Vector2( 43.4918, 32.0616 )
+color = Color( 0.976471, 0.92549, 0.607843, 1 )
+
+[node name="Progress" type="ProgressBar" parent="."]
+margin_left = 108.0
+margin_top = 279.0
+margin_right = 929.0
+margin_bottom = 349.0
