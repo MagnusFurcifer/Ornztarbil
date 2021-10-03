@@ -18,9 +18,16 @@ func _process(delta):
 	pass
 	
 func hit():
-	queue_free()
+	$death_sound.play()
+	$death_partcles.emitting = true
+	$aiming_timer.stop()
+	$Roundcube001.visible = false
+	for i in get_tree().get_nodes_in_group("projectile"):
+		if i.parent_entity == self:
+			i.queue_free()
 	
 func shoot_at_player():
+	$shoot_sound.play()
 	var projectile = preload("res://scenes/entities/shootyboi/subscene/projectile.tscn").instance()
 	var projectile_transform = self
 	projectile.global_transform = projectile_transform.global_transform
@@ -39,3 +46,7 @@ func _on_aiming_timer_timeout():
 		if hit.collider.is_in_group("player"):
 			shoot_at_player()
 	
+
+
+func _on_death_sound_finished():
+	queue_free()

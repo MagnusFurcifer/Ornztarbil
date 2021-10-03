@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/world/map_entities/falling_tile/falling_tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/world/map_entities/finish_line/finish_line.tscn" type="PackedScene" id=2]
@@ -35,6 +35,9 @@ size = Vector3( 2, 0.25, 2 )
 [sub_resource type="ConvexPolygonShape" id=8]
 points = PoolVector3Array( -0.927083, -0.125, -0.927083, -0.927083, -0.125, 0.927083, -0.927083, 0.125, -0.927083, -0.927083, 0.125, 0.927083, 0.927083, -0.125, -0.927083, 0.927083, -0.125, 0.927083, 0.927083, 0.125, -0.927083, 0.927083, 0.125, 0.927083 )
 
+[sub_resource type="ConcavePolygonShape" id=13]
+data = PoolVector3Array( -1, 0.125, 1, 1, 0.125, 1, -1, -0.125, 1, 1, 0.125, 1, 1, -0.125, 1, -1, -0.125, 1, 1, 0.125, -1, -1, 0.125, -1, 1, -0.125, -1, -1, 0.125, -1, -1, -0.125, -1, 1, -0.125, -1, 1, 0.125, 1, 1, 0.125, -1, 1, -0.125, 1, 1, 0.125, -1, 1, -0.125, -1, 1, -0.125, 1, -1, 0.125, -1, -1, 0.125, 1, -1, -0.125, -1, -1, 0.125, 1, -1, -0.125, 1, -1, -0.125, -1, 1, 0.125, 1, -1, 0.125, 1, 1, 0.125, -1, -1, 0.125, 1, -1, 0.125, -1, 1, 0.125, -1, -1, -0.125, 1, 1, -0.125, 1, -1, -0.125, -1, 1, -0.125, 1, 1, -0.125, -1, -1, -0.125, -1 )
+
 [sub_resource type="ProceduralSky" id=9]
 
 [sub_resource type="Environment" id=10]
@@ -67,13 +70,13 @@ material/0 = null
 shape = SubResource( 3 )
 
 [node name="spawn" type="Spatial" parent="player_one_start"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.559225 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.545793, -1.92672 )
 
 [node name="look_at_target" type="Spatial" parent="player_one_start"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.44908 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684799, 5.44908 )
 
 [node name="finish" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.91166e-05, 0, -9 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.91166e-05, 0, 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="finish"]
 mesh = SubResource( 5 )
@@ -97,21 +100,47 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0, 0.625 )
 shape = SubResource( 8 )
 
 [node name="key_platform" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45473, 0, 12.368 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="key_platform"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0, 0.625 )
 mesh = SubResource( 7 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="key_platform"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0, 0.625 )
-shape = SubResource( 8 )
+shape = SubResource( 13 )
 
 [node name="active_tiles" type="Spatial" parent="."]
 
 [node name="falling_tile_small" parent="active_tiles" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 3.5 )
+starting_phase = 1
+
+[node name="falling_tile_small2" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 4.5 )
+starting_phase = 1
+
+[node name="falling_tile_small3" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 5.5 )
+starting_phase = 1
+
+[node name="falling_tile_small4" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 5.5 )
+starting_phase = 1
+
+[node name="falling_tile_small5" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 5.5 )
+starting_phase = 1
+
+[node name="falling_tile_small6" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 5.5 )
+starting_phase = 1
+
+[node name="falling_tile_small7" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 4.5 )
+starting_phase = 1
+
+[node name="falling_tile_small8" parent="active_tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 3.5 )
 starting_phase = 1
 
 [node name="death_box" parent="." instance=ExtResource( 3 )]

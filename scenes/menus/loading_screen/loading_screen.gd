@@ -8,6 +8,7 @@ onready var progress = $Progress
 
 func _ready():
 	randomize()
+	progress.percent_visible = false
 
 func _thread_load(path):
 	var ril = ResourceLoader.load_interactive(path)

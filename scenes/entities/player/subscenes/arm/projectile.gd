@@ -31,6 +31,7 @@ func _on_life_timeout():
 	destroy()
 	
 func destroy():
+	self.disconnect("body_entered", self, "_on_projectile_body_entered")
 	$death_particles.emitting = true
 	dying = true
 	

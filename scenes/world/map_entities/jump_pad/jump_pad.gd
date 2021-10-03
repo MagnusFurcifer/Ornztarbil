@@ -1,6 +1,6 @@
 extends Area
 
-export var bounce = 10
+export var boost_str = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,4 +8,6 @@ func _ready():
 
 
 func _on_jump_pad_body_entered(body):
-	GameManager.player.jump_pad_activate(bounce)
+	if body.is_in_group("player"):
+		$boost_sound.play()
+		GameManager.player.jump_pad_activate(boost_str)

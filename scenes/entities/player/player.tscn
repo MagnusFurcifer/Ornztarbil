@@ -1,9 +1,20 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/entities/player/player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/entities/player/subscenes/arm/arm.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/entities/player/assets/crosshair.png" type="Texture" id=3]
 [ext_resource path="res://scenes/entities/player/x_hair_controller.gd" type="Script" id=4]
+[ext_resource path="res://scenes/entities/player/assets/land_sound.wav" type="AudioStream" id=5]
+[ext_resource path="res://scenes/entities/player/assets/death.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/fonts/ArchitectsDaughter-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=5]
+size = 48
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 7 )
 
 [sub_resource type="CylinderMesh" id=1]
 top_radius = 0.25
@@ -48,6 +59,55 @@ __meta__ = {
 [node name="xhair" type="Sprite" parent="head/Camera/Control"]
 texture = ExtResource( 3 )
 
+[node name="pre_ui" type="Control" parent="head/Camera/Control"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="head/Camera/Control/pre_ui"]
+margin_left = 256.0
+margin_top = 164.0
+margin_right = 751.0
+margin_bottom = 232.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Click Mouse 1 to start!"
+
+[node name="post_ui" type="Control" parent="head/Camera/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="head/Camera/Control/post_ui"]
+margin_left = 256.0
+margin_top = 164.0
+margin_right = 751.0
+margin_bottom = 232.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Mouse 1 for next Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="time" type="Label" parent="head/Camera/Control/post_ui"]
+margin_left = 44.3333
+margin_top = 30.4484
+margin_right = 559.333
+margin_bottom = 98.4484
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.988235, 0.992157, 0.992157, 1 )
+custom_colors/font_outline_modulate = Color( 0.533333, 0.72549, 0.568627, 1 )
+text = "Level Time: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="camera_pivot" type="Spatial" parent="head"]
 
 [node name="third_person_camera" type="Camera" parent="head/camera_pivot"]
@@ -78,6 +138,12 @@ wait_time = 0.1
 one_shot = true
 
 [node name="walk_player" type="AudioStreamPlayer" parent="footstep_stuff"]
+
+[node name="boost_land_sound" type="AudioStreamPlayer" parent="footstep_stuff"]
+stream = ExtResource( 5 )
+
+[node name="death_sound" type="AudioStreamPlayer" parent="footstep_stuff"]
+stream = ExtResource( 6 )
 
 [node name="enemy_projectile_detector" type="KinematicBody" parent="." groups=[
 "player",

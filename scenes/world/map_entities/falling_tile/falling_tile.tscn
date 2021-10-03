@@ -54,6 +54,7 @@ collision_mask = 2
 shape = SubResource( 7 )
 
 [node name="stood_on_timer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="falling_tween" type="Tween" parent="."]

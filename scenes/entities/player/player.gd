@@ -59,36 +59,57 @@ enum {
 
 var current_state = IDLE
 
-
+var function_has_boosted = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
-	#get mouse input for camera rotation
-	if event is InputEventMouseMotion:
-		rotate_y(deg2rad(-event.relative.x * mouse_sense))
-		head.rotate_x(deg2rad(-event.relative.y * mouse_sense))
-		head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
-	pass
-	
-	if Input.is_action_just_pressed("action_shoot"):
-		arm.shoot()
+	if GameManager.world_manager.game_state == GameManager.world_manager.INGAME:
+		#get mouse input for camera rotation
+		if event is InputEventMouseMotion:
+			rotate_y(deg2rad(-event.relative.x * mouse_sense))
+			head.rotate_x(deg2rad(-event.relative.y * mouse_sense))
+			head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
 		pass
+		
+		if Input.is_action_just_pressed("action_shoot"):
+			arm.shoot()
+			pass
+	else:
+		if Input.is_action_just_pressed("action_shoot"):
+			GameManager.world_manager.progress_game_state()
+			
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 	if Input.is_action_just_pressed("action_restart"):
 		GameManager.world_manager.player_restart()
 
+func play_death_sound():
+	$footstep_stuff/death_sound.play()
+
+func update_current_time(current_time):
+	$head/Camera/Control/post_ui/time.text = "Level Time: " + str(current_time) + " seconds"
+	pass
+
 func _process(delta):
 		
 	if current_state == SPRINTING:
-		#print("Sprinting")
 		speed = sprint_speed
 		foot_step(0.05)
 	elif current_state == RUNNING:
 		speed = run_speed
 		foot_step(0.1)
+		
+	if GameManager.world_manager.game_state == GameManager.world_manager.PRE:
+		$head/Camera/Control/pre_ui.visible = true
+		$head/Camera/Control/post_ui.visible = false
+	elif GameManager.world_manager.game_state == GameManager.world_manager.INGAME:
+		$head/Camera/Control/pre_ui.visible = false
+		$head/Camera/Control/post_ui.visible = false
+	elif GameManager.world_manager.game_state == GameManager.world_manager.POST:
+		$head/Camera/Control/pre_ui.visible = false
+		$head/Camera/Control/post_ui.visible = true
 		
 func foot_step(timeout):
 	if !$footstep_stuff/walk_player.playing:
@@ -101,43 +122,50 @@ func _on_walk_player_finished():
 	$footstep_stuff/walk_timeout.start()
 		
 		
-func jump_pad_activate(bounce):
-	velocity.y += bounce
+func jump_pad_activate(boost_str):
+	print("Jump pad activate")
+	velocity.y = boost_str
+	function_has_boosted = true
 		
 func _physics_process(delta):
-	direction = Vector3.ZERO
-	var h_rot = global_transform.basis.get_euler().y
-	var f_input = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
-	var h_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	direction = Vector3(h_input, 0, f_input).rotated(Vector3.UP, h_rot).normalized()
-
+	if GameManager.world_manager.game_state == GameManager.world_manager.INGAME:
+		direction = Vector3.ZERO
+		var h_rot = global_transform.basis.get_euler().y
+		var f_input = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
+		var h_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+		direction = Vector3(h_input, 0, f_input).rotated(Vector3.UP, h_rot).normalized()
 			
-	#jumping and gravity
-	if is_on_floor():
-		snap = -get_floor_normal()
-		accel = ACCEL_DEFAULT
-		gravity_vec = Vector3.ZERO
-		if current_state == FALLING:
-			current_state = IDLE
-	else:
-		snap = Vector3.DOWN
-		accel = ACCEL_AIR
-		gravity_vec += Vector3.DOWN * gravity * delta
-		if gravity_vec.y < 0.1:
-			current_state = FALLING
-			
-	if current_state != FALLING:
-		if direction.x == 0 and direction.z == 0:
-			current_state = IDLE
+		#jumping and gravity
+		if is_on_floor():
+			snap = -get_floor_normal()
+			accel = ACCEL_DEFAULT
+			gravity_vec = Vector3.ZERO
+			if current_state == FALLING:
+				current_state = IDLE
 		else:
-			if Input.is_action_pressed("move_sprint"):
-				current_state = SPRINTING
+			snap = Vector3.DOWN
+			accel = ACCEL_AIR
+			gravity_vec += Vector3.DOWN * gravity * delta
+			if gravity_vec.y < 0.1:
+				current_state = FALLING
+				
+		if current_state != FALLING:
+			if direction.x == 0 and direction.z == 0:
+				current_state = IDLE
 			else:
-				current_state = RUNNING
-	
-	#make it move
-	velocity = velocity.linear_interpolate(direction * speed, accel * delta)
-	movement = velocity + gravity_vec
-	
-	move_and_slide(movement, Vector3.UP)
-
+				if Input.is_action_pressed("move_sprint"):
+					current_state = SPRINTING
+				else:
+					current_state = RUNNING
+		
+		#make it move
+		velocity = velocity.linear_interpolate(direction * speed, accel * delta)
+		movement = velocity + gravity_vec
+		
+		move_and_slide(movement, Vector3.UP)
+		
+		#landing sound after a jump pad boost
+		if is_on_floor():
+			if function_has_boosted:
+				$footstep_stuff/boost_land_sound.play()
+				function_has_boosted = false

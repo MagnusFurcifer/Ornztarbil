@@ -19,5 +19,4 @@ func _ready():
 	
 	
 func _on_Tween_tween_all_completed():
-	print("Cloud finished")
 	self.queue_free()

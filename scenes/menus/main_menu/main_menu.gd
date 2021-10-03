@@ -12,7 +12,8 @@ func _input(event):
 
 func _on_Button_pressed():
 	if OS.get_name() == "HTML5":
-		get_tree().change_scene("res://scenes/world/world.tscn")
+		get_tree().change_scene("res://scenes/menus/loading_screen/loading_screen_fake.tscn")
 		pass
 	else:
 		LoadingScreen.load_scene("res://scenes/world/world.tscn")
+

@@ -1,0 +1,220 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/world/map_entities/cloud_spawn/cloud_spawn.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/ArchitectsDaughter-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/menus/end_menu/end_menu.gd" type="Script" id=3]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "default"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 2.14355, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=7]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="ProceduralSky" id=5]
+
+[sub_resource type="Environment" id=6]
+background_mode = 1
+background_sky = SubResource( 5 )
+background_color = Color( 0.756863, 0.92549, 0.952941, 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+fog_enabled = true
+fog_color = Color( 0.756863, 0.92549, 0.952941, 1 )
+fog_sun_color = Color( 1, 0.901961, 0.701961, 1 )
+
+[node name="end_menu" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.190046, -0.290572, 0.93779, 0.0249692, 0.95632, 0.291253, -0.981458, -0.0319357, 0.189, 86.1503, 53.4128, 41.2858 )
+
+[node name="Control" type="Control" parent="Camera"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Camera/Control"]
+margin_left = 190.324
+margin_top = 473.659
+margin_right = 410.324
+margin_bottom = 569.659
+theme = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.388235, 0.317647, 0.286275, 1 )
+custom_colors/font_color_hover = Color( 0.788235, 0.517647, 0.466667, 1 )
+custom_colors/font_color_pressed = Color( 0.670588, 0.733333, 0.776471, 1 )
+text = "Replay?"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="Camera/Control"]
+margin_left = 608.931
+margin_top = 475.073
+margin_right = 847.931
+margin_bottom = 571.073
+theme = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.388235, 0.317647, 0.286275, 1 )
+custom_colors/font_color_hover = Color( 0.788235, 0.517647, 0.466667, 1 )
+custom_colors/font_color_pressed = Color( 0.670588, 0.733333, 0.776471, 1 )
+text = "Quit"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LD Label" type="Label" parent="Camera/Control"]
+margin_left = 549.774
+margin_top = 393.725
+margin_right = 975.774
+margin_bottom = 461.725
+rect_scale = Vector2( 1.06567, 1.06567 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+text = "Thanks for Playing!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/Control/LD Label"]
+autoplay = "default"
+anims/default = SubResource( 4 )
+
+[node name="Control" type="Control" parent="Camera/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TIMES" type="Label" parent="Camera/Control/Control"]
+margin_left = 29.6985
+margin_top = 24.0416
+margin_right = 203.698
+margin_bottom = 69.0416
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.788235, 0.517647, 0.466667, 1 )
+text = "Level Times"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSplitContainer" type="HBoxContainer" parent="Camera/Control/Control/TIMES"]
+margin_left = 118.794
+margin_top = 74.9533
+margin_right = 158.794
+margin_bottom = 315.953
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/Control/Control/TIMES/HSplitContainer"]
+margin_bottom = 241.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="time_0" type="Label" parent="Camera/Control/Control/TIMES/HSplitContainer/VBoxContainer"]
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+
+[node name="time_1" type="Label" parent="Camera/Control/Control/TIMES/HSplitContainer/VBoxContainer"]
+margin_top = 49.0
+margin_bottom = 94.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+
+[node name="time_2" type="Label" parent="Camera/Control/Control/TIMES/HSplitContainer/VBoxContainer"]
+margin_top = 98.0
+margin_bottom = 143.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+
+[node name="time_3" type="Label" parent="Camera/Control/Control/TIMES/HSplitContainer/VBoxContainer"]
+margin_top = 147.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+
+[node name="time_4" type="Label" parent="Camera/Control/Control/TIMES/HSplitContainer/VBoxContainer"]
+margin_top = 196.0
+margin_bottom = 241.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+
+[node name="VSeparator" type="VSeparator" parent="Camera/Control/Control/TIMES/HSplitContainer"]
+margin_left = 4.0
+margin_right = 8.0
+margin_bottom = 241.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Camera/Control/Control/TIMES/HSplitContainer"]
+margin_left = 12.0
+margin_right = 12.0
+margin_bottom = 241.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="time_5" type="Label" parent="Camera/Control/Control/TIMES/HSplitContainer/VBoxContainer2"]
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+
+[node name="time_6" type="Label" parent="Camera/Control/Control/TIMES/HSplitContainer/VBoxContainer2"]
+margin_top = 49.0
+margin_bottom = 94.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+
+[node name="time_7" type="Label" parent="Camera/Control/Control/TIMES/HSplitContainer/VBoxContainer2"]
+margin_top = 98.0
+margin_bottom = 143.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+
+[node name="time_8" type="Label" parent="Camera/Control/Control/TIMES/HSplitContainer/VBoxContainer2"]
+margin_top = 147.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[node name="cloud_spawn" parent="WorldEnvironment" instance=ExtResource( 1 )]
+
+[connection signal="pressed" from="Camera/Control/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Camera/Control/Button2" to="." method="_on_Button2_pressed"]

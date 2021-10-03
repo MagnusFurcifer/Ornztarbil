@@ -1,0 +1,217 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/menus/loading_screen/loading_screen_fake.gd" type="Script" id=1]
+[ext_resource path="res://scenes/menus/loading_screen/loading_screen_font.tres" type="DynamicFont" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("L:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("O:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48, 0 ), Vector2( 48, -16 ), Vector2( 48, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("A:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 95, 0 ), Vector2( 95, -16 ), Vector2( 95, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("D:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 140, 0 ), Vector2( 140, -16 ), Vector2( 140, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("I:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 186, 0 ), Vector2( 186, -16 ), Vector2( 186, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("N:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 200, 0 ), Vector2( 200, -16 ), Vector2( 200, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("G:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.4, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 244, 0 ), Vector2( 244, -16 ), Vector2( 244, 0 ) ]
+}
+
+[node name="loading_screen" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="color_rect" type="ColorRect" parent="."]
+margin_left = -301.674
+margin_top = -272.307
+margin_right = -261.674
+margin_bottom = -232.307
+rect_scale = Vector2( 43.4918, 32.0616 )
+color = Color( 0.976471, 0.92549, 0.607843, 1 )
+
+[node name="Progress" type="ProgressBar" parent="."]
+margin_left = 108.0
+margin_top = 279.0
+margin_right = 929.0
+margin_bottom = 349.0
+
+[node name="loading_label" type="Control" parent="."]
+margin_left = 372.389
+margin_top = 132.496
+margin_right = 412.389
+margin_bottom = 172.496
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="L" type="Label" parent="loading_label"]
+margin_right = 44.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+text = "L"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="O" type="Label" parent="loading_label"]
+margin_left = 48.0
+margin_right = 91.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+text = "O"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="A" type="Label" parent="loading_label"]
+margin_left = 95.0
+margin_top = -5.096
+margin_right = 136.0
+margin_bottom = 84.904
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="D" type="Label" parent="loading_label"]
+margin_left = 140.0
+margin_top = -13.096
+margin_right = 182.0
+margin_bottom = 76.904
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+text = "D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="I" type="Label" parent="loading_label"]
+margin_left = 186.0
+margin_top = -13.9616
+margin_right = 196.0
+margin_bottom = 76.0384
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+text = "I"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="N" type="Label" parent="loading_label"]
+margin_left = 200.0
+margin_top = -11.6347
+margin_right = 240.0
+margin_bottom = 78.3653
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+text = "N"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="G" type="Label" parent="loading_label"]
+margin_left = 244.0
+margin_top = -9.97257
+margin_right = 288.0
+margin_bottom = 80.0274
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.533333, 0.72549, 0.568627, 1 )
+text = "G"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="loading_label"]
+autoplay = "default"
+anims/default = SubResource( 1 )
+
+[node name="fake_loading_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="fake_loading_timer" to="." method="_on_fake_loading_timer_timeout"]

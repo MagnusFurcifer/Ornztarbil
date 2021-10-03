@@ -7,6 +7,11 @@ func _ready():
 	reset_map()
 
 func reset_map():
+	
+	#Kill old bullets
+	for i in get_tree().get_nodes_in_group("projectile"):
+		i.queue_free()
+	
 	#Reset all falling tiles to their standard position
 	for i in $active_tiles.get_children():
 		i.block_enable()
@@ -19,5 +24,6 @@ func reset_map():
 		i.add_child(tmp)
 		tmp.global_transform.origin = i.global_transform.origin
 		
+	#Close doors
 	for i in $doors.get_children():
 		i.reset_door()

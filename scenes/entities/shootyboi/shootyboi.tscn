@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/entities/shootyboi/assets/Material_001.material" type="Material" id=1]
 [ext_resource path="res://scenes/entities/shootyboi/shootyboi.gd" type="Script" id=2]
+[ext_resource path="res://scenes/entities/shootyboi/assets/death.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/entities/shootyboi/assets/shoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://scenes/entities/player/assets/power_particle.png" type="Texture" id=5]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Roundcube001"
@@ -29,6 +32,16 @@ points = PoolVector3Array( -0.941256, -0.125637, 3.6208, -0.925263, 0.462833, 3.
 
 [sub_resource type="ConvexPolygonShape" id=5]
 points = PoolVector3Array( -0.967798, -2.18518, 0.176261, -0.965927, -2.18164, -0.186506, -0.965927, -0.00487503, -0.186506, -0.964637, 0.0464206, 0.175749, -0.915791, -2.18536, 0.383963, -0.915309, 0.826234, -0.134879, -0.910477, -2.17474, -0.39219, -0.901778, 0.143742, -0.388215, -0.855773, 0.815579, 0.380528, -0.850894, 0.808779, -0.388329, -0.85075, 0.0414695, 0.480746, -0.707763, -2.18494, -0.706073, -0.698688, 0.247455, -0.696663, -0.696833, 0.399216, 0.684904, -0.66546, 1.21282, 0.231211, -0.66468, 1.21095, -0.242292, -0.651901, -2.17334, 0.742749, -0.648351, 0.761103, -0.69746, -0.5534, 1.08995, 0.593131, -0.449281, 1.08979, -0.655724, -0.397883, -2.19223, 0.906801, -0.394259, -2.17531, -0.909142, -0.390723, 0.144161, -0.900653, -0.352454, 1.44008, 0.073559, -0.352365, 1.38644, 0.339454, -0.347457, 0.575274, 1.01607, -0.240799, -2.18647, 0.956008, -0.188601, -2.184, -0.965544, -0.188601, -0.0044025, -0.965544, -0.152451, 0.214284, 1.12626, -0.136915, 0.827753, -0.915008, -0.0866646, 1.43844, -0.350878, -0.0857882, 1.20836, 0.703289, 0.0190441, 1.20838, -0.714542, 0.0724403, 1.49183, 0.0735184, 0.174394, 0.047143, -0.964653, 0.175015, -2.18857, -0.968026, 0.227369, -2.19125, 0.958461, 0.33979, 1.39389, 0.34081, 0.376842, 0.246822, -0.901043, 0.379437, 0.81787, -0.855694, 0.383192, -2.1892, -0.916288, 0.386953, -2.20676, 0.913859, 0.388552, 1.37367, -0.295815, 0.406558, 0.62512, 1.06871, 0.542563, 1.09799, 0.596098, 0.590421, 1.03479, -0.602691, 0.642995, -2.18772, 0.748501, 0.650289, 1.21011, -0.294774, 0.651203, 1.2123, 0.283641, 0.684725, 0.400809, -0.696743, 0.742889, -2.17788, -0.651685, 0.786767, -0.00915982, 0.583743, 0.847278, 0.823313, -0.393574, 0.85175, 0.829546, 0.384778, 0.889737, 0.298354, -0.389321, 0.907181, -2.19623, -0.397294, 0.908674, 0.888327, -0.0839758, 0.912908, -2.20769, 0.388426, 0.951159, 0.0984786, 0.227472, 0.953064, 0.047488, -0.238688, 0.956237, -2.18987, -0.239544, 0.95786, 0.51879, 0.0205612, 0.958166, -2.19352, 0.228985 )
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+params_cull_mode = 2
+albedo_color = Color( 0.788235, 0.517647, 0.466667, 1 )
+albedo_texture = ExtResource( 5 )
+
+[sub_resource type="QuadMesh" id=7]
+material = SubResource( 6 )
+size = Vector2( 0.5, 0.5 )
 
 [node name="shootyboi" type="KinematicBody" groups=[
 "shootable",
@@ -66,4 +79,35 @@ cast_to = Vector3( 0, 0, 30 )
 [node name="aiming_timer" type="Timer" parent="."]
 autostart = true
 
+[node name="shoot_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+unit_db = 3.0
+max_db = 6.0
+
+[node name="death_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = 6.0
+max_db = 6.0
+
+[node name="death_partcles" type="CPUParticles" parent="."]
+transform = Transform( 0.99984, 0.0178014, -8.74227e-08, 0.0178014, -0.99984, 0, -8.74088e-08, -1.55625e-09, -0.999999, 0, 0, 0 )
+emitting = false
+amount = 128
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.4
+lifetime_randomness = 0.5
+mesh = SubResource( 7 )
+emission_shape = 1
+emission_sphere_radius = 0.25
+direction = Vector3( 0, 0, -64 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 16.0
+initial_velocity_random = 1.0
+linear_accel = 1.0
+linear_accel_random = 0.5
+
 [connection signal="timeout" from="aiming_timer" to="." method="_on_aiming_timer_timeout"]
+[connection signal="finished" from="death_sound" to="." method="_on_death_sound_finished"]
