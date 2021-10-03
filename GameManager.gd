@@ -3,9 +3,11 @@ extends Node
 
 var current_level = 0
 onready var level_array = [
-	load("res://scenes/world/maps/level_01/map.tscn"),
+	load("res://scenes/world/maps/level_05/map.tscn"),
 	load("res://scenes/world/maps/level_02/map.tscn"),
 	load("res://scenes/world/maps/level_03/map.tscn"),
+	load("res://scenes/world/maps/level_04/map.tscn"),
+	load("res://scenes/world/maps/level_05/map.tscn"),
 ]
 
 

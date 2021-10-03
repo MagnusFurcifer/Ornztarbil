@@ -101,6 +101,9 @@ func _on_walk_player_finished():
 	$footstep_stuff/walk_timeout.start()
 		
 		
+func jump_pad_activate(bounce):
+	velocity.y += bounce
+		
 func _physics_process(delta):
 	direction = Vector3.ZERO
 	var h_rot = global_transform.basis.get_euler().y

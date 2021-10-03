@@ -11,9 +11,13 @@ func reset_map():
 	for i in $active_tiles.get_children():
 		i.block_enable()
 		
+	#Reset all enemies
 	for i in $enemy_spawns.get_children():
 		for x in i.get_children():
 			x.queue_free()
 		var tmp = enemy_object.instance()
 		i.add_child(tmp)
 		tmp.global_transform.origin = i.global_transform.origin
+		
+	for i in $doors.get_children():
+		i.reset_door()
